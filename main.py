@@ -15,12 +15,10 @@ def save():
     master.destroy()
 
 def paint(event):
-    x1, y1 = (event.x - 1), (event.y - 1)
-    x2, y2 = (event.x + 1), (event.y + 1)
-    canvas.create_oval(x1, y1, x2, y2, fill="black",width=5)
-    draw.line([x1, y1, x2, y2],fill="black",width=5)
-
-
+    x1, y1 = (event.x - 1), (event.y)
+    x2, y2 = (event.x + 1), (event.y)
+    canvas.create_oval(x1, y1, x2, y2, fill="black",width=2)
+    draw.line([x1, y1, x2, y2],fill="black",width=2)
 
 def plot_fourier(x_vals, y_vals, levels):
     L = x_vals[-1]
@@ -76,8 +74,8 @@ if __name__ == '__main__':
     master.mainloop()
 
     arr = np.where(image_array[:, 0] < 255)
-    y = np.subtract(height, np.divide(arr, height)[0]) / 10
-    x = np.mod(arr, width)[0] / 10
+    y = np.subtract(height, np.divide(arr, height)[0])
+    x = np.mod(arr, width)[0]
 
     x_order = np.argsort(x)
     x = x[x_order]
@@ -89,7 +87,7 @@ if __name__ == '__main__':
     # x = np.arange(0, 10, 0.001)
     # y = x**4 + 3 * x**2
     # plt.plot(x, y)
-    plot_fourier(x, y, 10)
+    plot_fourier(x, y, 50)
     plt.show()
 
 
