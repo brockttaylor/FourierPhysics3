@@ -72,7 +72,7 @@ def arc_length(poly, t1, t2):
 
 if __name__ == '__main__':
 
-    paths, attributes, svg_attributes = svg.svg2paths2("witch-by-loginueveilustra-silhouette.svg")
+    paths, attributes, svg_attributes = svg .svg2paths2("witch-by-loginueveilustra-silhouette.svg")
     #svg.wsvg(paths, attributes = attributes, svg_attributes = svg_attributes, filename="output1.svg")
     paths = paths[0]
     Paths_DF = pd.DataFrame({"Path": paths, "Length": paths.length()})
@@ -82,7 +82,7 @@ if __name__ == '__main__':
     Paths_DF = Paths_DF.assign(time = Paths_DF["percent_length"].cumsum()).drop(columns = "percent_length")
 
 
-    Fourier_approx_real, Fourier_approx_imag = Fourier(Paths_DF, 20)
+    Fourier_approx_real, Fourier_approx_imag = Fourier(Paths_DF, 100)
 
     plt.plot(Fourier_approx_real, Fourier_approx_imag)
     plt.gca().invert_yaxis()
